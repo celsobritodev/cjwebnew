@@ -1,47 +1,42 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@page import="java.util.List"%>  
-<%@page import="br.com.hightechcursos.entidades.Usuario"%>  
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Listando com JSTL</title>
 </head>
 <body>
 
+<%
+  String nome = (String) request.getAttribute("meunome");
+  out.print(nome);
+%>
+${requestScope.meunome}
+
+
 <table border="1">
 
-<tr bgcolor="#CCCCCC">
-<th> ID</th>
-<th>Nome</th> 
- <th>Login</th> 
-  <th>Senha</th>
+ <tr bgcolor="#CCCCCC">
+  <th> ID</th>  <th>Nome</th>  <th>Login</th> <th>Senha</th> <th>Ação</th>
+</tr>
 
 
-<%
- List<Usuario> lista = (List<Usuario>) request.getAttribute("lista");
-
-for(Usuario usu:lista) {
-%>
-
+<c:forEach items="${requestScope.lista}" var="usu">
   <tr>
-      <td> <%=usu.getId() %> </td>
-      <td> <%=usu.getNome()%> </td>
-      <td> <%=usu.getLogin()%> </td>
-      <td> <%=usu.getSenha()%>  </td>
-      <td> <a href="usucontroller.do?acao=exc&id=<%=usu.getId()%>"> Excluir </a> </td>
+      <td> ${usu.id}    </td>
+      <td> ${usu.nome}  </td>
+      <td> ${usu.login} </td>
+      <td> ${usu.senha} </td>
+      <td>
+       <a href="usucontroller.do?acao=exc&id=${usu.id}"> Excluir </a> 
+       <a href="usucontroller.do?acao=alt&id=${usu.id}"> Alterar </a> 
+      </td>
       
-      <td> <a href="usucontroller.do?acao=alt&id=<%=usu.getId()%>"> Alterar </a> </td>
   </tr>
   
+ </c:forEach>
 
-
-<% 
-
-}
-
-%>
 
 </table>
 

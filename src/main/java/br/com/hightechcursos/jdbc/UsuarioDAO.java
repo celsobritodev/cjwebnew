@@ -105,7 +105,7 @@ public class UsuarioDAO {
 				lista.add(usu);
 			}
 			preparador.close();
-			System.out.println("Excluido com sucesso");
+			System.out.println("Listado com sucesso");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -173,6 +173,11 @@ public class UsuarioDAO {
 
 	
 	
+	/**
+	 * Busca por login e senha de usuario
+	 * @param usuario Objeto com login e senha a ser consultado
+	 * @return 'null' quando nao encontra ou um ponteiro a um ojbeto usuario completo quando encontra
+	 */
 	
 	public Usuario autenticar(Usuario usuario) {
 		String sql = "SELECT * FROM Usuario WHERE login = ? AND senha = ?";

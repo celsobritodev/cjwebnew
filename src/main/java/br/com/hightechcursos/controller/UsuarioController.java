@@ -43,6 +43,8 @@ public class UsuarioController extends HttpServlet {
 			Usuario usuario = new Usuario();
 			usuario.setId(Integer.parseInt(id));
 			usuarioDAO.excluir(usuario);
+			// redirecionando pelo cliente (browser)
+			response.sendRedirect("usucontroller.do?acao=lis");
 
 		}
 
@@ -63,6 +65,9 @@ public class UsuarioController extends HttpServlet {
 		if (acao != null && acao.equals("lis")) {
 			System.out.println("Entrando no listar: " );
 			List<Usuario> usuarios = usuarioDAO.buscarTodos();
+			
+			
+			request.setAttribute("meunome", "virmesson");
 
 			// "engavetar"no request
 			request.setAttribute("lista", usuarios);
