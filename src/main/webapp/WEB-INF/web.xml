@@ -25,4 +25,15 @@
     <url-pattern>/AutenticadorController</url-pattern>
     <url-pattern>/autcontroller.do</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>FiltroAutentica</display-name>
+    <filter-name>FiltroAutentica</filter-name>
+    <filter-class>br.com.hightechcursos.controller.FiltroAutentica</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>FiltroAutentica</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
 </web-app>
