@@ -41,7 +41,7 @@ public class FiltroAutentica extends HttpFilter implements Filter {
 		// Capturando Sessao
 		HttpSession sessao = httpServletRequest.getSession();
 		
-		if(sessao.getAttribute("usuLogado")!=null || url.lastIndexOf("login.html")>-1 || url.lastIndexOf("autcontroller.doo")>-1) {
+		if(sessao.getAttribute("usuLogado")!=null || url.lastIndexOf("login.html")>-1 || url.lastIndexOf("autcontroller.do")>-1) {
 			chain.doFilter(request, response);
 		} else {
 			// redireciona para login

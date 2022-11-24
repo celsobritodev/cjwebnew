@@ -30,6 +30,12 @@ public class AutenticadorController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession sessao = request.getSession(false);
+		if(sessao!=null) {
+			sessao.invalidate();
+		}
+		response.sendRedirect("login.html");
+		
 	}
 
 	/**
@@ -54,9 +60,11 @@ public class AutenticadorController extends HttpServlet {
         	
         	// criando a sessao
         	HttpSession sessao = request.getSession();
+        	sessao.setMaxInactiveInterval(3000);
         	sessao.setAttribute("usuLogado", usuRetorno);
         	
         	// encaminhando ao index
+        	
         	request.getRequestDispatcher("index.jsp").forward(request, response);
         	
         } else {

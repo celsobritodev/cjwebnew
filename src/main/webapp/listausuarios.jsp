@@ -5,15 +5,21 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Listando com JSTL</title>
+
+<script type="text/javascript">
+
+function confirmaExclusao(id) {
+	location.href="usucontroller.do?acao=exc&id="+id
+}
+
+
+
+</script>
+
 </head>
 <body>
 
-<%
-  String nome = (String) request.getAttribute("meunome");
-  out.print(nome);
-%>
-${requestScope.meunome}
-
+<c:import url="includes/menu.jsp"></c:import>
 
 <table border="1">
 
@@ -29,7 +35,7 @@ ${requestScope.meunome}
       <td> ${usu.login} </td>
       <td> ${usu.senha} </td>
       <td>
-       <a href="usucontroller.do?acao=exc&id=${usu.id}"> Excluir </a> 
+       <a href="javascript:confirmaExclusao(${usu.id})"> Excluir </a> 
        <a href="usucontroller.do?acao=alt&id=${usu.id}"> Alterar </a> 
       </td>
       

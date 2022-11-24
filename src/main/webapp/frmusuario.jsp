@@ -7,7 +7,8 @@
 </head>
 <body>
     
-  <form action="usucontroller.do" method="post">
+  <c:import url="includes/menu.jsp"></c:import>
+   <form action="usucontroller.do" method="post">
      
      <label>ID: </label>
      <input type="text" readonly="readonly" name="txtid" value="${requestScope.usuario.id}" size="20">
