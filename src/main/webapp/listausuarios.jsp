@@ -9,7 +9,10 @@
 <script type="text/javascript">
 
 function confirmaExclusao(id) {
-	location.href="usucontroller.do?acao=exc&id="+id
+	
+	if(window.confirm("Tem certeza que deseja exluir o registro de id: "+id)) {
+	location.href="usucontroller.do?acao=exc&id="+id;
+	}
 }
 
 

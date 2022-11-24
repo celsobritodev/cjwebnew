@@ -10,5 +10,8 @@
   <c:import url="includes/menu.jsp"></c:import>
   
   <h1> Bem vindo, '${sessionScope.usuLogado.nome}'  ao sistema !</h1>
+  
+  <img src="images/hightech.jpg"/>
+  
 </body>
 </html>
